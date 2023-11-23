@@ -9,7 +9,7 @@
 -- @license GNU General Public License v3.0
 
 local M = {}
-
+vim.keymap.set('i', '<C-H>', '<C-w>')
 --- Merge extended options with a default table of options
 ---@param default? table The default table that you want to merge into
 ---@param opts? table The new options that should be merged with the default table
