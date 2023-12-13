@@ -1,8 +1,10 @@
 local M = {};
 local schemeIndex = 1
 local options = { noremap = true }
+local scheme = "sherbet"
 
 M.my_init_commands = function()
+  vim.cmd("colorscheme " .. scheme)
   vim.keymap.set("c", "<C-H>", "<C-w>")
   vim.keymap.set("i", '<C-H>', '<C-w>')
   vim.keymap.set("c", "<C-BS>", "<C-w>")
@@ -11,7 +13,7 @@ M.my_init_commands = function()
   vim.keymap.set("n", "<leader>js", ":!node %<CR>")
   vim.keymap.set("n", "<leader>jp", ":!python3 %<CR>")
   vim.keymap.set("n", "<leader>jv", ":!javac *.java; java *")
-  vim.keymap.set("n", "<leader>bs", ":colorscheme ")
+  vim.keymap.set("n", "<leader>bs", function() vim.cmd("Telescope colorscheme") end)
   vim.keymap.set("n", ";", ":")
   vim.keymap.set("n", "L", "$")
   vim.keymap.set("n", "H", "^")
@@ -20,7 +22,6 @@ M.my_init_commands = function()
   vim.keymap.set("n", "yG", "ggVGy")
   vim.keymap.set("n", "<leader>s", ":%s/")
   vim.keymap.set("n", "<leader>bu", ":colorscheme blue")
-  vim.cmd("colorscheme catppuccin")
   ---vim.keymap.set("n", "<leader>", "") -- default leader rebind.
   vim.keymap.set("x", ">", function()
     vim.cmd("normal! >>")
@@ -37,6 +38,11 @@ M.my_init_commands = function()
   vim.cmd("set norelativenumber")
   require("oil").setup()
   vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  vim.keymap.set("n", "<C-u>", "<C-u>zz")
+  vim.keymap.set("n", "<C-d>", "<C-d>zz")
+  vim.keymap.set("n", "_", ":%y<CR><CR>")
+  vim.keymap.set("n", ":", ";");
+  vim.keymap.set("i", "<C-x>", "<ESC>:x<CR>")
 end
 
 M.bg_scroll = function()

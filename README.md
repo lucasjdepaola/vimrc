@@ -1,3 +1,3 @@
 ## configuration for my neovim
 
-originally installed a distro, but modified it a lot.
+credit to astronvim for the base of my configuration, have modified my configuration via the user/ directory.
