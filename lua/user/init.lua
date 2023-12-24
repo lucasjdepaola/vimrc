@@ -1,7 +1,7 @@
 local M = {};
 local schemeIndex = 1
 local options = { noremap = true }
-local scheme = "sherbet"
+local scheme = "github_dark"
 
 M.my_init_commands = function()
   vim.cmd("colorscheme " .. scheme)
@@ -12,7 +12,10 @@ M.my_init_commands = function()
   vim.keymap.set("n", "<leader>x", ":x<CR>")
   vim.keymap.set("n", "<leader>js", ":!node %<CR>")
   vim.keymap.set("n", "<leader>jp", ":!python3 %<CR>")
-  vim.keymap.set("n", "<leader>jv", ":!javac *.java; java *")
+  vim.keymap.set("n", "<leader>jv", function()
+    vim.cmd("!javac *.java; java Main")
+  end)
+  vim.keymap.set("n", "<leader>jr", "!. ./run.ps1")
   vim.keymap.set("n", "<leader>bs", function() vim.cmd("Telescope colorscheme") end)
   vim.keymap.set("n", ";", ":")
   vim.keymap.set("n", "L", "$")
@@ -43,6 +46,9 @@ M.my_init_commands = function()
   vim.keymap.set("n", "_", ":%y<CR><CR>")
   vim.keymap.set("n", ":", ";");
   vim.keymap.set("i", "<C-x>", "<ESC>:x<CR>")
+  vim.opt.shell = 'pwsh'
+  vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
+  vim.opt.shellxquote = ''
 end
 
 M.bg_scroll = function()
